@@ -15,6 +15,7 @@
             height: 100vh;
             background-color: #f0f8ff;
             text-align: center;
+            position: relative;
         }
         .container {
             background: white;
@@ -28,12 +29,29 @@
         p {
             color: #666;
         }
+        .visitor-counter {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #333;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
+    <div class="visitor-counter">Visitors: <span id="count">0</span></div>
     <div class="container">
         <h1>Welcome to My Website</h1>
         <p>We're glad to have you here. Enjoy your stay!</p>
     </div>
+    <script>
+        let count = localStorage.getItem('visitorCount') ? parseInt(localStorage.getItem('visitorCount')) : 0;
+        count++;
+        localStorage.setItem('visitorCount', count);
+        document.getElementById('count').textContent = count;
+    </script>
 </body>
 </html>
